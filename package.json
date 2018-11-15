@@ -1,0 +1,75 @@
+{
+  "name": "@atomist/automation-client-ext-vault",
+  "version": "1.0.1",
+  "description": "Extension for resolving placeholders and secrets in client configuration from vault",
+  "author": {
+    "name": "Atomist",
+    "email": "support@atomist.com",
+    "url": "https://atomist.com/"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/atomist/automation-client-ext-vault#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomist/automation-client-ext-vault.git"
+  },
+  "keywords": [
+    "atomist",
+    "automation",
+    "vault"
+  ],
+  "bugs": {
+    "url": "https://github.com/atomist/automation-client-ext-vault/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "node-vault": "^0.9.0"
+  },
+  "peerDependencies": {
+    "@atomist/automation-client": ">=1.1.0"
+  },
+  "devDependencies": {
+    "@atomist/automation-client": "1.1.0-master.20181115072619",
+    "@types/lodash": "^4.14.118",
+    "@types/mocha": "^5.2.5",
+    "@types/mockery": "^1.4.29",
+    "@types/node": "^10.12.3",
+    "@types/node-vault": "^0.5.3",
+    "@types/power-assert": "^1.4.29",
+    "espower-typescript": "^9.0.1",
+    "mocha": "^5.2.0",
+    "mockery": "^2.1.0",
+    "npm-run-all": "^4.1.2",
+    "power-assert": "^1.4.4",
+    "rimraf": "^2.6.2",
+    "supervisor": "^0.12.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.9.1",
+    "typedoc": "^0.13.0",
+    "typescript": "^3.1.6"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "autotest": "supervisor --watch index.ts,lib,test --extensions ts --no-restart-on exit --quiet --exec npm -- test",
+    "build": "npm-run-all compile test lint doc",
+    "clean": "npm-run-all clean:compile clean:doc",
+    "clean:compile": "rimraf build git-info.json \"index.{d.ts,js*}\" \"{lib,test}/**/*.{d.ts,js*}\" lib/typings/types.ts",
+    "clean:dist": "npm-run-all clean clean:npm",
+    "clean:doc": "rimraf doc",
+    "clean:npm": "rimraf node_modules",
+    "compile": "npm-run-all compile:ts",
+    "compile:ts": "tsc --project .",
+    "doc": "typedoc --mode modules --ignoreCompilerErrors --exclude \"**/*.d.ts\" --out doc index.ts lib",
+    "lint": "tslint --format verbose --project . --exclude \"{build,node_modules}/**\" --exclude \"**/*.d.ts\" \"**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "mocha --require espower-typescript/guess \"test/**/*.test.ts\"",
+    "test:one": "mocha --require espower-typescript/guess \"test/**/${TEST:-*.test.ts}\"",
+    "typedoc": "npm run doc"
+  },
+  "engines": {
+    "node": "8.x.x",
+    "npm": "5.x.x"
+  }
+}
