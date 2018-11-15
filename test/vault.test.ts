@@ -4,11 +4,11 @@
  * See LICENSE file.
  */
 
-import "mocha";
 import * as mockery from "mockery";
 import * as assert from "power-assert";
 import { configureVaultLookup } from "../lib/vault";
 
+// tslint:disable:no-invalid-template-strings
 describe("vault", () => {
 
     before(() => {

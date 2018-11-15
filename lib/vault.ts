@@ -56,7 +56,8 @@ export function configureVaultLookup(options: VaultOptions = {}): ConfigurationP
 const PlaceholderExpression = /\$\{vault:([#/.a-zA-Z_-]+)([.:0-9a-zA-Z-_ \" ]+)*\}/g;
 
 function resolveVaultPlaceholder(vault: any): (value: string) => Promise<string> {
-    return async value => {
+    return async input => {
+        let value = input;
         if (PlaceholderExpression.test(value)) {
             PlaceholderExpression.lastIndex = 0;
             let result;
