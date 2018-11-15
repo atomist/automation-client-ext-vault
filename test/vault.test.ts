@@ -1,9 +1,3 @@
-/*
- * Copyright © 2018 Atomist, Inc.
- *
- * See LICENSE file.
- */
-
 import * as mockery from "mockery";
 import * as assert from "power-assert";
 import { configureVaultLookup } from "../lib/vault";
