@@ -1,6 +1,6 @@
 {
   "name": "@atomist/automation-client-ext-vault",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Extension for resolving placeholders and secrets in client configuration from vault",
   "author": {
     "name": "Atomist",
